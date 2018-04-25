@@ -30,7 +30,7 @@ class DevelopConfig(Config):
         "PASSWORD":'123456',
         'HOST':'127.0.0.1',
         'POST':'3306',
-        'NAME':'TPP',
+        'NAME':'TPP123',
         # 哪一种库
         "DB":'mysql',
         # 驱动

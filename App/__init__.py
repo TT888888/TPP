@@ -12,8 +12,10 @@ def craeat_app(env_name):
 
     # 初始化
     app.config.from_object(settings.config.get(env_name) or 'default')
-
+    # 用于json数据的编码
+    app.config.update(RESTFUL_JSON=dict(ensure_ascii=False))
     # 模块初始化
+
     init_ext(app=app)
 
     init_blue(app=app)

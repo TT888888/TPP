@@ -1,0 +1,57 @@
+a{
+    text-decoration:none;
+}
+.TopBox{
+    margin: 0 auto;
+    width: 1200px;
+    height: 50px;
+    background: #f5f5f5;
+}
+.TopBox .TopLeft{
+    width:300px;
+    height: 50px;
+}
+.TopBox .TopLeft a{
+    display:inline-block;
+    padding:0 10px;
+    height: 50px;
+    text-align: center;
+    line-height:50px;
+    color:#666;
+    margin-right:20px;
+}
+.TopBox .TopLeft a:hover{
+    color:#eb002a;
+    text-decoration:none;
+}
+.Navs{
+    margin: 0 auto;
+    width: 1200px;
+    height: 100px;
+    padding-top:0.1px;
+}
+.Navs .logo{
+   display: block;
+    float: left;
+    width: 150px;
+    height: 72px;
+    margin-top:23px;
+}
+.Navs ul{
+    float:left;
+    margin-top:45px;
+    margin-left:40px;
+}
+.Navs ul li{
+    float:left;
+    font-size:24px;
+    margin:0 20px;
+}
+.Navs ul li a{
+    color:#666666;
+    text-decoration: none;
+}
+.Navs ul li a:hover{
+    color:#eb002a;
+    text-decoration:none;
+}
