@@ -126,6 +126,27 @@ city_fields = {
 
 letter_fields = {
     "A": fields.List(fields.Nested(city_fields)),
+    "B": fields.List(fields.Nested(city_fields)),
+    "C": fields.List(fields.Nested(city_fields)),
+    "D": fields.List(fields.Nested(city_fields)),
+    "E": fields.List(fields.Nested(city_fields)),
+    "F": fields.List(fields.Nested(city_fields)),
+    "G": fields.List(fields.Nested(city_fields)),
+    "H": fields.List(fields.Nested(city_fields)),
+    "J": fields.List(fields.Nested(city_fields)),
+    "K": fields.List(fields.Nested(city_fields)),
+    "L": fields.List(fields.Nested(city_fields)),
+    "M": fields.List(fields.Nested(city_fields)),
+    "N": fields.List(fields.Nested(city_fields)),
+    "P": fields.List(fields.Nested(city_fields)),
+    "Q": fields.List(fields.Nested(city_fields)),
+    "R": fields.List(fields.Nested(city_fields)),
+    "S": fields.List(fields.Nested(city_fields)),
+    "T": fields.List(fields.Nested(city_fields)),
+    "W": fields.List(fields.Nested(city_fields)),
+    "X": fields.List(fields.Nested(city_fields)),
+    "Y": fields.List(fields.Nested(city_fields)),
+    "Z": fields.List(fields.Nested(city_fields)),
 }
 
 
@@ -135,8 +156,8 @@ result_fields = {
 }
 
 
-
 class CityResource(Resource):
+
     @marshal_with(result_fields)
     def get(self):
 
@@ -146,20 +167,54 @@ class CityResource(Resource):
 
         for letter in letters:
 
+            # print(letter)
+
             cities = City.query.filter_by(letter=letter.id)
 
             # print(cities)
 
-            for city in cities:
-                print("123213")
-                print(city.regionName)
-
+            # for city in cities:
+            #     print(city.regionName)
             returnValue[letter.letter] = cities
 
         return {"returnCode": "0", "returnValue": returnValue}
 
+    def post(self):
 
-api.add_resource(CityResource,'/c/')
+        letter_fields_dynamic = {}
+
+        returnValue = {}
+
+        letters = Letter.query.all()
+
+        for letter in letters:
+            # print(letter)
+
+            cities = City.query.filter_by(letter=letter.id)
+
+            # print(cities)
+
+            # for city in cities:
+            #     print(city.regionName)
+
+            letter_fields_dynamic[letter.letter] = fields.List(fields.Nested(city_fields))
+
+            returnValue[letter.letter] = cities
+
+
+        result_fields_dynamic = {
+            "returnCode": fields.String,
+            "returnValue": fields.Nested(letter_fields_dynamic)
+        }
+
+        result = marshal({"returnCode": "0", "returnValue": returnValue}, result_fields_dynamic)
+
+        print(result)
+
+        return result
+
+
+api.add_resource(CityResource, "/cities/")
 
 
 

@@ -55,3 +55,35 @@ a{
     color:#eb002a;
     text-decoration:none;
 }
+.lili{
+    background:orange;
+    position:relative;
+}
+.lili .box_a{
+    width:1200px;
+    height:300px;
+    border:2px solid pink;
+    position:absolute;
+    left:0;
+    top:40px;
+    overflow: auto;
+}
+.lili .box_a div{
+    width:1100px;
+    margin:0 auto;
+    padding-top:0.1px;
+
+}
+.lili .box_a div dl{
+    clear: both;
+    font-size:14px;
+    margin-top:50px;
+}
+.lili .box_a div dl dt{
+    float:left;
+    background:grey;
+    padding:5px;
+}
+.lili .box_a div dl dd{
+    float:left;
+}

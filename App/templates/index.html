@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/index.css">
+    <script src="../static/libs/jquery.js"></script>
     <title>首页</title>
 </head>
 <body>
@@ -18,10 +19,20 @@
             <img src="http://gw.alicdn.com/tps/i2/TB1zoNfJVXXXXbCXVXXgap8FVXX-150-72.png" alt="">
         </a>
        <ul>
-           <li>
+           <li class="lili">
                <p>
                     北京
                </p>
+               <div class='box_a'>
+                   <div class="jsbox">
+                       <dl >
+                           <dt>A</dt>
+                           <dd>
+                               <p>他萨</p>
+                           </dd>
+                       </dl>
+                   </div>
+               </div>
            </li>
            <li>
                <a href="">首页</a>
@@ -38,4 +49,28 @@
     </div>
 
 </body>
+    <script type="text/javascript">
+        $.get('http://127.0.0.1:5000/c/',function (data) {
+
+            datas=data.returnValue;
+            // console.log(datas)
+            var str="";
+            for (zimu in datas){
+                // console.log(zimu)
+                str+= '<dl >'+
+                          ' <dt>'+zimu+'</dt>';
+                for(var i=0;i<datas[zimu].length;i++){
+                    str+=' <dd>'+
+                              ' <p>'+ datas[zimu][i]["regionName"]+'</p>'+
+                           '</dd>';
+
+                }
+
+
+
+                      str+= ' </dl>';
+            }
+            $(".jsbox").html(str)
+        })
+    </script>
 </html>
